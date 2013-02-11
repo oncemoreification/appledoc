@@ -15,7 +15,7 @@
  
  Dividing implementation of methods provider to a separate class allows us to abstract the logic and reuse it within any object that needs to handle methods using composition. This breaks down the code into simpler and more managable chunks. It also simplifies methods parsing and handling. To use the class, simply "plug" it to the class that needs to handle methods and provide access through public interface.
  
- The downside is that querrying code becomes a bit more verbose as another method or property needs to be sent before getting access to actual methods data.
+ The downside is that querying code becomes a bit more verbose as another method or property needs to be sent before getting access to actual methods data.
  */
 @interface GBMethodsProvider : NSObject {
 	@private

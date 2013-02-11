@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28DF990116C89DB90074A04B /* GBEnumsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DF990016C89DB90074A04B /* GBEnumsProvider.m */; };
+		28DF990416C89F3C0074A04B /* GBEnumData.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DF990316C89F3C0074A04B /* GBEnumData.m */; };
 		7307B311124A1929007EC6B8 /* GBObjectiveCParser-SectionsParsingTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 7307B310124A1929007EC6B8 /* GBObjectiveCParser-SectionsParsingTesting.m */; };
 		7307B31A124A1C2E007EC6B8 /* GBMethodSectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7307B319124A1C2E007EC6B8 /* GBMethodSectionData.m */; };
 		7307B31B124A1C2E007EC6B8 /* GBMethodSectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7307B319124A1C2E007EC6B8 /* GBMethodSectionData.m */; };
@@ -253,6 +255,10 @@
 
 /* Begin PBXFileReference section */
 		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		28DF98FF16C89DB90074A04B /* GBEnumsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBEnumsProvider.h; sourceTree = "<group>"; };
+		28DF990016C89DB90074A04B /* GBEnumsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBEnumsProvider.m; sourceTree = "<group>"; };
+		28DF990216C89F3C0074A04B /* GBEnumData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBEnumData.h; sourceTree = "<group>"; };
+		28DF990316C89F3C0074A04B /* GBEnumData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBEnumData.m; sourceTree = "<group>"; };
 		7307B310124A1929007EC6B8 /* GBObjectiveCParser-SectionsParsingTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GBObjectiveCParser-SectionsParsingTesting.m"; sourceTree = "<group>"; };
 		7307B318124A1C2E007EC6B8 /* GBMethodSectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBMethodSectionData.h; sourceTree = "<group>"; };
 		7307B319124A1C2E007EC6B8 /* GBMethodSectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBMethodSectionData.m; sourceTree = "<group>"; };
@@ -915,6 +921,8 @@
 				73FC731211FDADD600AAD0B9 /* GBIvarData.m */,
 				73FC741B11FE215E00AAD0B9 /* GBMethodData.h */,
 				73FC741C11FE215E00AAD0B9 /* GBMethodData.m */,
+				28DF990216C89F3C0074A04B /* GBEnumData.h */,
+				28DF990316C89F3C0074A04B /* GBEnumData.m */,
 				73FC742B11FE274300AAD0B9 /* GBMethodArgument.h */,
 				73FC742C11FE274300AAD0B9 /* GBMethodArgument.m */,
 				735B237F1304024600704844 /* GBDocumentData.h */,
@@ -1115,6 +1123,8 @@
 				73FC730711FDAACD00AAD0B9 /* GBIvarsProvider.m */,
 				73FC740F11FE1FDF00AAD0B9 /* GBMethodsProvider.h */,
 				73FC741011FE1FDF00AAD0B9 /* GBMethodsProvider.m */,
+				28DF98FF16C89DB90074A04B /* GBEnumsProvider.h */,
+				28DF990016C89DB90074A04B /* GBEnumsProvider.m */,
 				7367BB3412003CAB005ED6CD /* GBModelBase.h */,
 				7367BB3512003CAB005ED6CD /* GBModelBase.m */,
 				736B2BF4124BCBB6009145B1 /* GBSourceInfo.h */,
@@ -1500,6 +1510,8 @@
 				B4D1FFE115FF5F05009736E2 /* DDZipWriter.m in Sources */,
 				B4D1FFE315FF5F05009736E2 /* DDEmbeddedDataReader.m in Sources */,
 				B4D1FFE515FF5F05009736E2 /* DDXcodeProjectFile.m in Sources */,
+				28DF990116C89DB90074A04B /* GBEnumsProvider.m in Sources */,
+				28DF990416C89F3C0074A04B /* GBEnumData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

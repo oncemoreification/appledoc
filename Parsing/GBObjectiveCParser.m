@@ -48,6 +48,7 @@
 - (void)matchCategoryDeclaration;
 - (void)matchMethodDeclarationsForProvider:(GBMethodsProvider *)provider defaultsRequired:(BOOL)required;
 - (BOOL)matchMethodDeclarationForProvider:(GBMethodsProvider *)provider required:(BOOL)required;
+- (BOOL)matchEnumDeclarationsForProvider:(GBEnumsProvider *)provider required:(BOOL)required;
 - (void)consumeMethodBody;
 
 @end
@@ -58,6 +59,7 @@
 - (BOOL)matchObjectDefinition;
 - (BOOL)matchObjectDeclaration;
 - (BOOL)matchMethodDataForProvider:(GBMethodsProvider *)provider from:(NSString *)start to:(NSString *)end required:(BOOL)required;
+- (BOOL)matchEnumDataForProvider:(GBEnumsProvider *)provider from:(NSString *)start to:(NSString *)end required:(BOOL)required;
 - (void)registerComment:(GBComment *)comment toObject:(GBModelBase *)object;
 - (void)registerLastCommentToObject:(GBModelBase *)object;
 - (void)registerSourceInfoFromCurrentTokenToObject:(GBModelBase *)object;
@@ -363,6 +365,13 @@
 	return NO;
 }
 
+- (BOOL)matchEnumDeclarationsForProvider:(GBEnumsProvider *)provider required:(BOOL)required {
+    if ([self matchEnumDataForProvider:provider from:@"{" to:@"}" required:required]) {
+        return YES;
+    }
+    return NO;
+}
+
 - (void)consumeMethodBody {
 	// This method assumes we're currently pointing to the first token after method's opening brace!
 	__block NSUInteger braceLevel = 1;
@@ -597,6 +606,10 @@
 		result = YES;
 	}];
 	return result;
+}
+
+- (BOOL)matchEnumDataForProvider:(GBEnumsProvider *)provider from:(NSString *)start to:(NSString *)end required:(BOOL)required {
+    // TODO(jj) parse enum data! Investigation warranted.
 }
 
 - (void)registerLastCommentToObject:(GBModelBase *)object {

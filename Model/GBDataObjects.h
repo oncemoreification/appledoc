@@ -18,6 +18,7 @@
 
 #import "GBIvarData.h"
 #import "GBMethodData.h"
+#import "GBEnumData.h"
 #import "GBMethodArgument.h"
 #import "GBMethodSectionData.h"
 #import "GBSourceInfo.h"
@@ -25,3 +26,4 @@
 #import "GBAdoptedProtocolsProvider.h"
 #import "GBIvarsProvider.h"
 #import "GBMethodsProvider.h"
+#import "GBEnumsProvider.h"
