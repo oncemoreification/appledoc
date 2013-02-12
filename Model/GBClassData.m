@@ -26,6 +26,7 @@
 		_adoptedProtocols = [[GBAdoptedProtocolsProvider alloc] initWithParentObject:self];
 		_ivars = [[GBIvarsProvider alloc] initWithParentObject:self];
 		_methods = [[GBMethodsProvider alloc] initWithParentObject:self];
+        _enums = [[GBEnumsProvider alloc] initWithParentObject:self];
 	}
 	return self;
 }
@@ -51,6 +52,7 @@
 	[self.adoptedProtocols mergeDataFromProtocolsProvider:sourceClass.adoptedProtocols];
 	[self.ivars mergeDataFromIvarsProvider:sourceClass.ivars];
 	[self.methods mergeDataFromMethodsProvider:sourceClass.methods];
+    [self.enums mergeDataFromEnumsProvider:sourceClass.enums];
 }
 
 - (NSString *)description {

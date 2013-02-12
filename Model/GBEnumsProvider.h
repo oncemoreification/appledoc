@@ -49,7 +49,7 @@
  @param enum The enum to register.
  @exception NSException Thrown if the given ivar is already registered.
  */
-- (void)registerIvar:(GBEnumData *)enumerable;
+- (void)registerEnum:(GBEnumData *)enumerable;
 
 /** Merges data from the given enums provider.
  
@@ -57,7 +57,7 @@
  
  @param source `GBEnumsProvider` to merge from.
  */
-- (void)mergeDataFromIvarsProvider:(GBEnumsProvider *)source;
+- (void)mergeDataFromEnumsProvider:(GBEnumsProvider *)source;
 
 /** The array of all registered ivars as `GBEnumData` instances in the order of registration. */
 @property (readonly) NSArray *enums;

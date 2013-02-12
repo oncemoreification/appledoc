@@ -12,6 +12,7 @@
 @class GBAdoptedProtocolsProvider;
 @class GBIvarsProvider;
 @class GBMethodsProvider;
+@class GBEnumsProvider;
 
 /** Describes a class.
  */
@@ -66,5 +67,8 @@
 
 /** Class's methods, available via `GBMethodsProvider`. */
 @property (readonly) GBMethodsProvider *methods;
+
+/** Class's enums, available via 'GBEnumsProvider'. */
+@property (readonly) GBEnumsProvider *enums;
 
 @end

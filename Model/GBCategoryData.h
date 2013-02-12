@@ -68,4 +68,7 @@
 /** Categories methods, available via `GBMethodsProvider`. */
 @property (readonly) GBMethodsProvider *methods;
 
+/** Class's enums, available via 'GBEnumsProvider'. */
+@property (readonly) GBEnumsProvider *enums;
+
 @end

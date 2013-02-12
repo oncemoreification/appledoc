@@ -26,6 +26,7 @@
 		_className = [className copy];
 		_adoptedProtocols = [[GBAdoptedProtocolsProvider alloc] initWithParentObject:self];
 		_methods = [[GBMethodsProvider alloc] initWithParentObject:self];
+        _enums = [[GBEnumsProvider alloc] initWithParentObject:self];
 	}
 	return self;
 }
@@ -43,6 +44,7 @@
 	GBCategoryData *sourceCategory = (GBCategoryData *)source;	
 	[self.adoptedProtocols mergeDataFromProtocolsProvider:sourceCategory.adoptedProtocols];
 	[self.methods mergeDataFromMethodsProvider:sourceCategory.methods];
+    [self.enums mergeDataFromEnumsProvider:sourceCategory.enums];
 }
 
 - (NSString *)description {

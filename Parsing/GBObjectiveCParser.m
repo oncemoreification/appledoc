@@ -48,7 +48,7 @@
 - (void)matchCategoryDeclaration;
 - (void)matchMethodDeclarationsForProvider:(GBMethodsProvider *)provider defaultsRequired:(BOOL)required;
 - (BOOL)matchMethodDeclarationForProvider:(GBMethodsProvider *)provider required:(BOOL)required;
-- (BOOL)matchEnumDeclarationsForProvider:(GBEnumsProvider *)provider required:(BOOL)required;
+- (BOOL)matchEnumDeclarationsForProvider:(GBEnumsProvider *)provider defaultsRequired:(BOOL)required;
 - (void)consumeMethodBody;
 
 @end
@@ -327,6 +327,7 @@
 	[self registerLastCommentToObject:class];
 	[self.tokenizer consume:2];
 	[self matchMethodDeclarationsForProvider:class.methods defaultsRequired:NO];
+    [self matchEnumDeclarationsForProvider:class.enums defaultsRequired:NO];
 	[self.store registerClass:class];
 }
 
@@ -341,6 +342,7 @@
 	[self registerLastCommentToObject:category];
 	[self.tokenizer consume:5];
 	[self matchMethodDeclarationsForProvider:category.methods defaultsRequired:NO];
+    [self matchEnumDeclarationsForProvider:category.enums defaultsRequired:NO];
 	[self.store registerCategory:category];
 }
 
@@ -365,8 +367,8 @@
 	return NO;
 }
 
-- (BOOL)matchEnumDeclarationsForProvider:(GBEnumsProvider *)provider required:(BOOL)required {
-    if ([self matchEnumDataForProvider:provider from:@"{" to:@"}" required:required]) {
+- (BOOL)matchEnumDeclarationsForProvider:(GBEnumsProvider *)provider defaultsRequired:(BOOL)required {
+    if ([self matchEnumDataForProvider:provider from:@"enum" to:@"typedef" required:required]) {
         return YES;
     }
     return NO;
@@ -492,7 +494,7 @@
 			assertMethod = NO;
 		}
 		
-		// Prepare source information and reset comments; we alreay read the values so as long as we have found a method, we should reset the comments to prepare ground for next methods. This is needed due to the way this method works - it actually ends by jumping to the first token after the given end symbol, which effectively positions tokenizer to the first token of the following method. Therefore it already consumes any comment preceeding the method. So we can't reset AFTER finished parsing, but rather before! Note that we should only do it once...
+		// Prepare source information and reset comments; we already read the values so as long as we have found a method, we should reset the comments to prepare the ground for the following methods. This is needed due to the way this method works - it actually ends by jumping to the first token after the given end symbol, which effectively positions tokenizer to the first token of the following method. Therefore it already consumes any comment preceding the method. So we can't reset AFTER finished parsing, but rather before! Note that we should only do it once...
 		if (!filedata) {
 			filedata = [self.tokenizer sourceInfoForToken:token];
 			[self.tokenizer resetComments];
@@ -524,7 +526,7 @@
 				return;
 			}
 			
-			// If we receive semicolon, ignore it - this works for both - definition and declaration!
+			// If we receive semicolon, ignore it - this works for both definition and declaration!
 			if ([token matches:@";"]) {
 				*stop = YES;
 				return;
@@ -609,7 +611,66 @@
 }
 
 - (BOOL)matchEnumDataForProvider:(GBEnumsProvider *)provider from:(NSString *)start to:(NSString *)end required:(BOOL)required {
-    // TODO(jj) parse enum data! Investigation warranted.
+    // TODO(jj) make this less ugly.
+    __block GBComment *comment;
+	__block GBComment *sectionComment;
+    __block NSString *sectionName;
+    __block GBSourceInfo *filedata = nil;
+    [self updateLastComment:&comment sectionComment:&sectionComment sectionName:&sectionName];
+    [self.tokenizer consumeFrom:start to:end usingBlock:^(PKToken *token, BOOL *consume, BOOL *stop) {
+        if (!filedata) {
+			filedata = [self.tokenizer sourceInfoForToken:token];
+			[self.tokenizer resetComments];
+		}
+        __block NSMutableArray *constants = [NSMutableArray array];
+        [self.tokenizer consumeFrom:@"{" to:@"}" usingBlock:^(PKToken *token, BOOL *consume, BOOL *stop) {
+			// Get the constants.
+            if ([token matches:@"="]) {
+                // Don't care about what follows the constant.
+                [self.tokenizer consume:2];
+                return;
+            }
+            if ([token matches:@","]) {
+                [self.tokenizer consume:1];
+                return;
+            }
+            
+            NSString *constant = [token stringValue];
+            [self.tokenizer consume:1];
+            [constants addObject:constant];
+            return;
+		}];
+        
+        if ([token matches:@";"]) {
+            [self.tokenizer consume:1];
+            return; 
+        }
+        
+        __block NSString *type = nil;
+        __block NSString *name = nil;
+        [self.tokenizer consumeFrom:@"typedef" to:@";" usingBlock:^(PKToken *token, BOOL *consume, BOOL *stop) {
+            if(!type) {
+                type = [token stringValue];
+            } else {
+                name = [token stringValue];
+            }
+        }];
+        
+                
+        // Create enum instance and register it.
+        GBEnumData *enumData = [GBEnumData enumDataWithConstants:constants
+                                                            type:type
+                                                            name:name];
+        [enumData registerSourceInfo:filedata];
+        GBLogDebug(@"Matched enum %@%@ at line %lu.", start, enumData, enumData.prefferedSourceInfo.lineNumber);
+        [self registerComment:comment toObject:enumData];
+        [provider registerSectionIfNameIsValid:sectionName];
+        [provider registerEnum:enumData];
+        *consume = NO;
+        *stop = YES;
+    }];
+
+    return true;    
 }
 
 - (void)registerLastCommentToObject:(GBModelBase *)object {
