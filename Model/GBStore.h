@@ -49,7 +49,7 @@
  @see classWithName:
  @see classes
  */
-- (void)registerClass:(GBClassData *)class;
+- (void)registerClass:(GBClassData *)klass;
 
 /** Registers the given category to the store data.
  

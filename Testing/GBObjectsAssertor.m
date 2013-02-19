@@ -200,9 +200,8 @@
 		GBCommentArgument *argument = [arguments objectAtIndex:i];
 		NSDictionary *data = [expected objectAtIndex:i];
 		
-		NSString *expectedName = [data objectForKey:@"name"];		
+		NSString *expectedName = [data objectForKey:@"name"];
 		assertThat(argument.argumentName, is(expectedName));
-
 		NSMutableArray *expectedComps = [data objectForKey:@"comps"];
 		if ([expectedComps count] > 0) {
 			NSString *firstExpectedComp = [expectedComps firstObject];
@@ -210,11 +209,11 @@
 			char *argList = NULL;
 			if ([expectedComps count] > 0) {
 				argList = (char *)malloc(sizeof(char) * [expectedComps count]);
-				[expectedComps getObjects:(id *)argList];				
+				[expectedComps getObjects:(id *)argList range:NSMakeRange(0u, expectedComps.count)];
 			}
-			[self assertCommentComponents:argument.argumentDescription matchesValues:firstExpectedComp values:(__va_list_tag *)argList];
-		}
-	}
+			[self assertCommentComponents:argument.argumentDescription matchesValues:firstExpectedComp values:(id *)argList];
+        }
+    }
 }
 
 @end

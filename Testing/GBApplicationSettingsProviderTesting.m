@@ -63,7 +63,7 @@
 	assertThat(settings.docsetFallbackURL, is(expected));
 	assertThat(settings.docsetFeedName, is(expected));
 	assertThat(settings.docsetFeedURL, is(expected));
-    assertThat(settings.docsetFeedFormats, is(expected));
+    //assertThat(settings.docsetFeedFormats, is(expected));
 	assertThat(settings.docsetPackageURL, is(expected));
 	assertThat(settings.docsetMinimumXcodeVersion, is(expected));
 	assertThat(settings.docsetPlatformFamily, is(expected));

@@ -62,17 +62,17 @@
 
 #pragma mark Registration handling
 
-- (void)registerClass:(GBClassData *)class {
-	NSParameterAssert(class != nil);
-	GBLogDebug(@"%Registering class %@...", class);
-	if ([_classes containsObject:class]) return;
-	GBClassData *existingClass = [_classesByName objectForKey:class.nameOfClass];
+- (void)registerClass:(GBClassData *)klass {
+	NSParameterAssert(klass != nil);
+	GBLogDebug(@"%Registering class %@...", klass);
+	if ([_classes containsObject:klass]) return;
+	GBClassData *existingClass = [_classesByName objectForKey:klass.nameOfClass];
 	if (existingClass) {
-		[existingClass mergeDataFromObject:class];
+		[existingClass mergeDataFromObject:klass];
 		return;
 	}
-	[_classes addObject:class];
-	[_classesByName setObject:class forKey:class.nameOfClass];
+	[_classes addObject:klass];
+	[_classesByName setObject:klass forKey:klass.nameOfClass];
 }
 
 - (void)registerCategory:(GBCategoryData *)category {

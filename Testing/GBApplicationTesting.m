@@ -463,13 +463,13 @@
 	assertThat(settings.docsetFeedURL, is(@"value"));
 }
 
-- (void)testDocSetFeedFormat_shouldAssignValueToSettings {
-    
-    // setup & execute
-    GBApplicationSettingsProvider *settings = [self settingsByRunningWithArgs:@"--docset-feed-formats", @"value", nil];
-    // verify
-    assertThat(settings.docsetFeedFormats, is(@"value"));
-}
+//- (void)testDocSetFeedFormat_shouldAssignValueToSettings {
+//    
+//    // setup & execute
+//    GBApplicationSettingsProvider *settings = [self settingsByRunningWithArgs:@"--docset-feed-formats", @"value", nil];
+//    // verify
+//    assertThat(settings.docsetFeedFormats, is(@"value"));
+//}
 
 - (void)testDocSetPackageURL_shouldAssignValueToSettings {
 	// setup & execute

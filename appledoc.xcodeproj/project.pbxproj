@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28945DA316D1EE62001ABF83 /* GBObjectiveCParser-EnumsParsingTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 28945DA216D1EE62001ABF83 /* GBObjectiveCParser-EnumsParsingTesting.m */; };
+		28945DA416D2DE80001ABF83 /* GBEnumData.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DF990316C89F3C0074A04B /* GBEnumData.m */; };
+		28945DA516D2DE8F001ABF83 /* GBEnumsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DF990016C89DB90074A04B /* GBEnumsProvider.m */; };
 		28DF990116C89DB90074A04B /* GBEnumsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DF990016C89DB90074A04B /* GBEnumsProvider.m */; };
 		28DF990416C89F3C0074A04B /* GBEnumData.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DF990316C89F3C0074A04B /* GBEnumData.m */; };
 		7307B311124A1929007EC6B8 /* GBObjectiveCParser-SectionsParsingTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 7307B310124A1929007EC6B8 /* GBObjectiveCParser-SectionsParsingTesting.m */; };
@@ -255,6 +258,7 @@
 
 /* Begin PBXFileReference section */
 		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		28945DA216D1EE62001ABF83 /* GBObjectiveCParser-EnumsParsingTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GBObjectiveCParser-EnumsParsingTesting.m"; sourceTree = "<group>"; };
 		28DF98FF16C89DB90074A04B /* GBEnumsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBEnumsProvider.h; sourceTree = "<group>"; };
 		28DF990016C89DB90074A04B /* GBEnumsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBEnumsProvider.m; sourceTree = "<group>"; };
 		28DF990216C89F3C0074A04B /* GBEnumData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBEnumData.h; sourceTree = "<group>"; };
@@ -965,6 +969,7 @@
 				7367B8D311FF07FF005ED6CD /* GBObjectiveCParser-ProtocolParsingTesting.m */,
 				7367B8A211FEFFB5005ED6CD /* GBObjectiveCParser-AdoptedProtocolsParsingTesting.m */,
 				7367B89911FEFE4D005ED6CD /* GBObjectiveCParser-IvarsParsingTesting.m */,
+				28945DA216D1EE62001ABF83 /* GBObjectiveCParser-EnumsParsingTesting.m */,
 				7367B8A811FF001D005ED6CD /* GBObjectiveCParser-MethodsParsingTesting.m */,
 				7307B310124A1929007EC6B8 /* GBObjectiveCParser-SectionsParsingTesting.m */,
 				73FC702C11FCEDDD00AAD0B9 /* GBTokenizerTesting.m */,
@@ -1419,6 +1424,9 @@
 				B4D1FFE215FF5F05009736E2 /* DDZipWriter.m in Sources */,
 				B4D1FFE415FF5F05009736E2 /* DDEmbeddedDataReader.m in Sources */,
 				B4D1FFE615FF5F05009736E2 /* DDXcodeProjectFile.m in Sources */,
+				28945DA316D1EE62001ABF83 /* GBObjectiveCParser-EnumsParsingTesting.m in Sources */,
+				28945DA416D2DE80001ABF83 /* GBEnumData.m in Sources */,
+				28945DA516D2DE8F001ABF83 /* GBEnumsProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
